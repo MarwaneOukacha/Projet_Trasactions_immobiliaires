@@ -3,25 +3,27 @@ package com.BackEnd.PartieBackEnd.Entitys;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.Data;
 
 @Entity
+@Data
 public class Annonce {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToOne
-	@Column
-	private Utilisateur intermidiaire;
-	@OneToOne
-	@Column
-	private Utilisateur citoyen;
 	@Column(nullable=false)
+	private long intermidiaireID;
+	@Column(nullable=false)
+	private long citoyenId;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date date_annnonce;
 	@Column(nullable=false)
 	private String status;
@@ -41,7 +43,7 @@ public class Annonce {
 	private Double PrixBien;
 	@Column(nullable=false)
 	private String Description;
-	@OneToMany
-	private List<Justificatif> Justif;
+	@Column()
+	private String AnnonceId;
 	
 }
