@@ -1,6 +1,7 @@
 package com.BackEnd.PartieBackEnd.services;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -71,5 +72,44 @@ public class AnnonceServiceV1 implements AnnonceService{
         }
         repo.save(an);
 	}
-
+	@Override
+	public Annonce getAnnonce(long id) {
+		return repo.findById(id).get();
+	}
+	@Override
+	public void ReserverUneAnnonce(long IntermID,long AnnonceID){
+		Annonce ann=getAnnonce(AnnonceID);
+		ann.setStatus("reservé");
+		ann.setIntermidiaireID(IntermID);
+		repo.save(ann);
+	}
+	@Override
+	public void LibirerAnnonce(long AnnonceID){
+		Annonce ann=getAnnonce(AnnonceID);
+		ann.setStatus("");
+		ann.setIntermidiaireID(0);
+		repo.save(ann);
+	}
+	@Override
+	public void DeclareAnnonce(long AnnonceID,String etat) {
+		Annonce ann=getAnnonce(AnnonceID);
+		if(etat.equals("p")) {
+			ann.setDeclare("Publier");
+		}
+		else {
+			ann.setDeclare("Rejeter");
+		}
+		
+	}
+	@Override
+	public List<Annonce> getAllAnnoncesReserveIntermediaire(long intermidiaireID){
+		List<Annonce> L= repo.findByIntermidiaireID(intermidiaireID);
+		List<Annonce> resultat = new ArrayList<>();
+		for(int i=0;i<L.size();i++) {
+			if(L.get(i).getStatus().equals("reservé")) {
+				resultat.add(L.get(i));
+			}
+		}
+		return resultat;
+	}
 }

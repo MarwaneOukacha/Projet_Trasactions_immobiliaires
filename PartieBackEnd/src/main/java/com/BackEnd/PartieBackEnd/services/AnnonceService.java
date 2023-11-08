@@ -13,4 +13,9 @@ public interface AnnonceService {
 	List<Annonce> getAllAnnonces();
 	void SupprimerAnnonce(long id);
 	void modifier(long id, Annonce a);
+	Annonce getAnnonce(long id);
+	public void ReserverUneAnnonce(long IntermID,long AnnonceID);
+	public void LibirerAnnonce(long AnnonceID);
+	public void DeclareAnnonce(long AnnonceID,String etat);
+	public List<Annonce> getAllAnnoncesReserveIntermediaire(long intermidiaireID);
 }

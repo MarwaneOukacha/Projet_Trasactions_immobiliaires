@@ -36,5 +36,18 @@ public class AnnonceController {
 	public List<Annonce> GetAllAnnonce() {
 		return service.getAllAnnonces();
 	}
+	@GetMapping("/reserve/intermédiaire/{intermidiaireID}")
+	public List<Annonce> GetAllAnnonceReserverInterm(@PathVariable long intermidiaireID) {
+		return service.getAllAnnoncesReserveIntermediaire(intermidiaireID);
+	}
+	
+	@PostMapping("/reserve/{IntermID}")
+	public void ReserverAnnonce(@PathVariable long IntermID,long AnnonceID){
+		service.ReserverUneAnnonce(IntermID,AnnonceID);
+	}
+	@PostMapping("/libirer/{AnnonceID}")
+	public void LibirerAnnonce(@PathVariable long AnnonceID){
+		service.LibirerAnnonce(AnnonceID);
+	}
 }
 

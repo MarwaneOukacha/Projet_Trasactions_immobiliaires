@@ -44,6 +44,8 @@ public class Annonce {
 	@Column(nullable=false)
 	private String Description;
 	@Column()
+	private String Declare;
+	@Column()
 	private String AnnonceId;
 	
 }

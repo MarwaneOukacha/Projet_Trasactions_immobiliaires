@@ -1,5 +1,7 @@
 package com.BackEnd.PartieBackEnd.Controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,12 @@ public class UtilisateurController {
     public Utilisateur getUtilisateurById(@PathVariable Long id) {
         return utilisateurService.getUtilisateurById(id);
     }
+    
+    @GetMapping()
+    public List<Utilisateur> getAllUtilisateur() {
+        return utilisateurService.getAllUtilisateur();
+    }
+    
     @PutMapping("/{id}")
     public void updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur updatedUtilisateur) {
         utilisateurService.updateUtilisateur(id, updatedUtilisateur);

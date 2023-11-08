@@ -1,5 +1,7 @@
 package com.BackEnd.PartieBackEnd.services;
 
+import java.util.List;
+
 import com.BackEnd.PartieBackEnd.Entitys.Utilisateur;
 
 public interface UtilisateurService {
@@ -11,4 +13,6 @@ public interface UtilisateurService {
 	public void updateUtilisateur(Long id, Utilisateur updatedUtilisateur);
 
 	public void deleteUtilisateur(Long id);
+
+	public List<Utilisateur> getAllUtilisateur();
 }

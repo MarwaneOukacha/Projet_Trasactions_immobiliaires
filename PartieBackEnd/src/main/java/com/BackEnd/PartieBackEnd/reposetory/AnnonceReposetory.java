@@ -10,4 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface AnnonceReposetory extends JpaRepository<Annonce, Long>{
+	public List<Annonce> findByIntermidiaireID(long intermidiaireID);
 }
