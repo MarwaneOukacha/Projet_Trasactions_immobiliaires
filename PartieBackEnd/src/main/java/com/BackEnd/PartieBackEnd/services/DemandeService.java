@@ -20,5 +20,8 @@ public interface DemandeService {
 	Demande updateDemande(long id, Demande demande);
 
 	void deleteDemande(long id);
+	
+	public List<Demande> getALLDemandeByIME(String IME);
+	
 	public List<Demande> getAllDemandesRejeteByCitoyenID(long id);
 }

@@ -94,10 +94,10 @@ public class AnnonceServiceV1 implements AnnonceService{
 	public void DeclareAnnonce(long AnnonceID,String etat) {
 		Annonce ann=getAnnonce(AnnonceID);
 		if(etat.equals("p")) {
-			ann.setDeclare("Publier");
+			ann.setDeclaree("Publier");
 		}
 		else {
-			ann.setDeclare("Rejeter");
+			ann.setDeclaree("Rejeter");
 		}
 		
 	}
@@ -107,6 +107,17 @@ public class AnnonceServiceV1 implements AnnonceService{
 		List<Annonce> resultat = new ArrayList<>();
 		for(int i=0;i<L.size();i++) {
 			if(L.get(i).getStatus().equals("reservé")) {
+				resultat.add(L.get(i));
+			}
+		}
+		return resultat;
+	}
+	@Override
+	public List<Annonce> getAllAnnoncesRejeteCitoyen(long citoyenID) {
+		List<Annonce> L= repo.findByCitoyenId(citoyenID);
+		List<Annonce> resultat = new ArrayList<>();
+		for(int i=0;i<L.size();i++) {
+			if(L.get(i).getDeclaree().equals("Rejeter")) {
 				resultat.add(L.get(i));
 			}
 		}

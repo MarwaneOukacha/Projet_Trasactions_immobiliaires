@@ -10,6 +10,8 @@ import com.BackEnd.PartieBackEnd.reposetory.DemandeReposetory;
 @Service
 public class DemandeServiceV1 implements DemandeService{
 	@Autowired private DemandeReposetory repo;
+	@Autowired private UtilisateurService UserService;
+
 	@Override
 	public void createDemande(Demande demande) {
 		// TODO Auto-generated method stub
@@ -41,12 +43,17 @@ public class DemandeServiceV1 implements DemandeService{
 
 	@Override
 	public void deleteDemande(long id) {
-		// TODO Auto-generated method stub
 		repo.deleteById(id);
 	}
 	@Override
 	public List<Demande> getAllDemandesRejeteByCitoyenID(long id){
+		var L=repo.findByCitoyenID(id);
 		return null;
 		
+	}
+	@Override  
+	public List<Demande> getALLDemandeByIME(String IME){
+		var L=UserService.getUtilisateurByIME(IME).get(0).getID(); ////////cette methode pour la partie mobile
+		return repo.findByCitoyenID(L);
 	}
 }

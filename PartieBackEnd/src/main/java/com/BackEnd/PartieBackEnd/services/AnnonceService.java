@@ -18,4 +18,5 @@ public interface AnnonceService {
 	public void LibirerAnnonce(long AnnonceID);
 	public void DeclareAnnonce(long AnnonceID,String etat);
 	public List<Annonce> getAllAnnoncesReserveIntermediaire(long intermidiaireID);
+	public List<Annonce> getAllAnnoncesRejeteCitoyen(long intermidiaireID);
 }

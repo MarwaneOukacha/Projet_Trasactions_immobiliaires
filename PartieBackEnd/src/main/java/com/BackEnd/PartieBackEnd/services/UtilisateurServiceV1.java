@@ -77,4 +77,10 @@ public class UtilisateurServiceV1 implements UtilisateurService,UserDetailsServi
         return Useer;
 	}
 
+	@Override
+	public List<Utilisateur> getUtilisateurByIME(String IME) {
+		// TODO Auto-generated method stub
+		return repo.findByIME(IME);
+	}
+
 }

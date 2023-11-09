@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface AnnonceReposetory extends JpaRepository<Annonce, Long>{
 	public List<Annonce> findByIntermidiaireID(long intermidiaireID);
+	public List<Annonce> findByCitoyenId(long citoyenId);
 }
